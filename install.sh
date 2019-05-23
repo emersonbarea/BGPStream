@@ -19,6 +19,7 @@ function install_wandio() {
     sudo make
     sudo make install
     cd $INSTALL_DIR
+    sudo ldconfig
 }
 
 function install_BGPStream() {
