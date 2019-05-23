@@ -35,7 +35,7 @@ function install_BGPStream() {
 
 USER=$(whoami)
 HOME_DIR=$(echo $HOME)
-INSTALL_DIR=$HOME_DIR/MiniSecBGP
+INSTALL_DIR=$HOME_DIR/BGPStream
 
 update_OS_install_requirements
 install_wandio
