@@ -24,9 +24,9 @@ function install_wandio() {
 
 function install_BGPStream() {
     printf '\n\e[1;33m%-6s\e[m\n' '-- Installing BGPStream 1.2.3...'
-    curl -O http://bgpstream.caida.org/bundles/caidabgpstreamwebhomepage/dists/bgpstream-1.2.3.tar.gz -P $INSTALL_DIR
-    tar zxf $INSTALL_DIR/bgpstream-1.2.3.tar.gz
-    cd $INSTALL_DIR/bgpstream-1.2.3
+    cd $INSTALL_DIR
+    git clone https://github.com/CAIDA/bgpstream.git
+    cd $INSTALL_DIR/bgpstream
     ./autogen.sh
     ./configure
     sudo make
