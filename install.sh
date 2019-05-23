@@ -6,7 +6,7 @@
 function update_OS_install_requirements() {
     printf '\n\e[1;33m%-6s\e[m\n' '-- Updating O.S. and installing BGPStream packages requeriments...'
     sudo apt update; sudo apt upgrade -y; sudo apt autoremove
-    sudo apt install libbz2-dev zlib1g-dev libcurl-ocaml-dev build-essential -y
+    sudo apt install libbz2-dev zlib1g-dev libcurl-ocaml-dev build-essential python -y
 }
 
 function install_wandio() {
@@ -27,6 +27,7 @@ function install_BGPStream() {
     curl -O http://bgpstream.caida.org/bundles/caidabgpstreamwebhomepage/dists/bgpstream-1.2.3.tar.gz -P $INSTALL_DIR
     tar zxf $INSTALL_DIR/bgpstream-1.2.3.tar.gz
     cd $INSTALL_DIR/bgpstream-1.2.3
+    ./autogen.sh
     ./configure
     sudo make
     sudo make install
