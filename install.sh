@@ -6,7 +6,7 @@
 function update_OS_install_requirements() {
     printf '\n\e[1;33m%-6s\e[m\n' '-- Updating O.S. and installing BGPStream packages requeriments...'
     sudo apt update; sudo apt upgrade -y; sudo apt autoremove
-    sudo apt install libbz2-dev zlib1g-dev libcurl-ocaml-dev build-essential dh-autoreconf python python-pip -y
+    sudo apt install libbz2-dev zlib1g-dev libcurl-ocaml-dev build-essential dh-autoreconf python python-pip libtool-bin -y
 }
 
 function install_wandio() {
