@@ -31,11 +31,12 @@ function install_wandio() {
 function install_BGPStream() {
     printf '\n\e[1;33m%-6s\e[m\n' '-- Installing BGPStream 1.2.3...'
     cd $INSTALL_DIR
+    rm -rf $INSTALL_DIR/bgpstream 2> /dev/null
+    rm -rf $INSTALL_DIR/ltmain.sh 2> /dev/null
     printf '\n\e[1;33m%-6s\e[m\n' '- downloading BGPStream'
     git clone https://github.com/CAIDA/bgpstream.git
     cd $INSTALL_DIR/bgpstream
     printf '\n\e[1;33m%-6s\e[m\n' '- BGPStream - ./autogen.sh'
-    #sed -i -- 's/git submodule update/git submodule update\nmv ..\/ltmain.sh ./g' autogen.sh
     printf 'autoreconf -vfi' | sudo tee --append autogen.sh
     ./autogen.sh
     printf '\n\e[1;33m%-6s\e[m\n' '- BGPStream - ./configure'
@@ -45,6 +46,8 @@ function install_BGPStream() {
     printf '\n\e[1;33m%-6s\e[m\n' '- BGPStream - make install'
     sudo make install
     cd $INSTALL_DIR
+    printf '\n\e[1;33m%-6s\e[m\n' '- BGPStream - ldconfig'
+    sudo ldconfig
 }
 
 function install_PyBGPStream() {
@@ -53,7 +56,7 @@ function install_PyBGPStream() {
 }
 
 function test_PyBGPStream() {
-    printf '\n\e[1;33m%-6s\e[m\n' '-- Installing PyBGPStream...'
+    printf '\n\e[1;33m%-6s\e[m\n' '-- Testing PyBGPStream...'
     cd $INSTALL_DIR
     ./pybgpstream-print.py
     printf '\n\e[1;33m%-6s\e[m\n' 'If you are seeing an output started with this content "('ris', 'rrc11', 'update', 1438417216, 'valid'), everything is rigth :)'
